@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emily & Brady · August 1, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ======================================================
+     PASSWORD GATE
+====================================================== -->
+<div id="password-gate" style="
+  position: fixed; inset: 0; z-index: 99999;
+  background: url('assets/background.png') center center / cover no-repeat;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  font-family: 'Crimson Pro', serif;
+">
+  <div style="
+    background: rgba(255,248,238,0.88);
+    padding: 52px 48px; text-align: center;
+    max-width: 420px; width: 90%;
+    border: 1px solid #DFB3B7;
+  ">
+    <p style="font-family:'Pinyon Script',cursive; font-size:3rem; color:#C18987; margin-bottom:8px;">Emily &amp; Brady</p>
+    <p style="font-size:0.72rem; letter-spacing:0.3em; text-transform:uppercase; color:#C18987; margin-bottom:32px;">August 1, 2026</p>
+    <p style="font-style:italic; color:#7a6050; margin-bottom:24px; line-height:1.7;">Enter the password to view our wedding website.</p>
+    <input id="pw-input" type="password" placeholder="Password" style="
+      width:100%; padding:12px 16px; margin-bottom:12px;
+      border:1px solid #DFB3B7; background:#fffdf8;
+      font-family:'Crimson Pro',serif; font-size:1rem; color:#4a3728;
+      outline:none; box-sizing:border-box;
+    " />
+    <p id="pw-error" style="color:#a06060; font-style:italic; font-size:0.9rem; min-height:1.2em; margin-bottom:12px;"></p>
+    <button onclick="checkPassword()" style="
+      width:100%; padding:14px; background:#C18987; color:#FFF8EE;
+      border:none; font-family:'Crimson Pro',serif; font-size:0.8rem;
+      letter-spacing:0.3em; text-transform:uppercase; cursor:pointer;
+    ">Enter</button>
+  </div>
+</div>
+
+<!-- ======================================================
+     NAVBAR
+====================================================== -->
+<nav>
+  <a class="nav-brand" href="#hero">Emily &amp; Brady</a>
+  <ul class="nav-links">
+    <li><a href="#info">Info</a></li>
+    <li><a href="#timeline">Timeline</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#attire">Attire</a></li>
+    <li><a href="#registry">Registry</a></li>
+    <li><a href="#rsvp">RSVP</a></li>
+  </ul>
+</nav>
+
+<!-- ======================================================
+     SECTION 1 — HERO
+====================================================== -->
+<section id="hero">
+  <!-- Three marquee rows scroll right behind the photo -->
+  <div class="hero-bg" aria-hidden="true">
+    <!-- Row 1 -->
+    <div class="mq-row">
+      <div class="mq-track mq-1">
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+      </div>
+    </div>
+    <!-- Row 2 (slower, different phase) -->
+    <div class="mq-row">
+      <div class="mq-track mq-2">
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+      </div>
+    </div>
+    <!-- Row 3 (faster, different phase) -->
+    <div class="mq-row">
+      <div class="mq-track mq-3">
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+        <span class="hero-phrase">we're getting married!</span>
+      </div>
+    </div>
+  </div>
+  <!-- Photo sits on top -->
+  <div class="hero-photo-wrap">
+    <img class="hero-img" src="assets/us.JPG" alt="Emily &amp; Brady" />
+  </div>
+  <div class="scroll-cue">↓</div>
+</section>
+
+<!-- ======================================================
+     SECTION 2 — INFO / ENVELOPE
+====================================================== -->
+<section id="info">
+  <a href="https://www.google.com/maps/dir/?api=1&destination=31509+N+Cedar+Rd+Deer+Park+WA" target="_blank" rel="noopener" title="Get directions to Belle Gardens" style="display:inline-block; cursor:pointer;">
+    <img class="env-seq" id="envSeq" src="assets/env1.png" alt="Envelope — click for directions" />
+  </a>
+</section>
+
+<!-- ======================================================
+     SECTION 3 — TIMELINE
+====================================================== -->
+<section id="timeline" style="position:relative;">
+  <img src="assets/cake.png" alt="Cake" class="cake-img" />
+  <span class="eyebrow">The Day</span>
+  <h2 class="section-title">Order of Events</h2>
+
+  <div class="timeline-wrap">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">4:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-event">Ceremony</div>
+          <div class="tl-note">Join us as we say "I do"</div>
+          <div class="tl-note" style="margin-top: 4px; font-style: italic;">Please refrain from taking photos during the ceremony.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">4:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-event">Cocktail Hour</div>
+          <div class="tl-note">Sip, mingle &amp; celebrate</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">5:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-event">Dinner &amp; Toasts</div>
+          <div class="tl-note">A garden feast &amp; raising a glass</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">6:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-event">Cake Cutting</div>
+          <div class="tl-note">Let them eat cake</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">7:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-event">First Dances</div>
+          <div class="tl-note">Take to the floor with us</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">7:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-event">Open Dancing</div>
+          <div class="tl-note">The floor is yours</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-event">Send Off</div>
+          <div class="tl-note">Send us off in style</div>
+        </div>
+      </div>
+    </div>
+    <div class="locket-wrap">
+      <img src="assets/locket.png" alt="Locket" class="locket-img" />
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 4 — MENU
+====================================================== -->
+<section id="menu">
+  <div style="display:flex; align-items:center; justify-content:center; gap:0; flex-wrap:wrap;">
+    <div class="platter-wrap slide-left" style="margin-right:-60px; position:relative; z-index:1;">
+      <img class="platter-img" src="assets/drinks.png" alt="Drinks" />
+    </div>
+    <div class="platter-wrap slide-right" style="position:relative; z-index:2;">
+      <img class="platter-img" src="assets/platter.png" alt="Silver serving platter" />
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 5 — ATTIRE
+====================================================== -->
+<section id="attire">
+  <span class="eyebrow">Dress Code</span>
+  <h2 class="section-title">Garden Attire</h2>
+
+  <div class="attire-body">
+    <p class="attire-intro">
+      Our ceremony and reception will take place outside on grass and gravel.
+      Please wear comfortable footwear!<br /><br />
+      Our dress code is anything colorful, ruffles, or floral prints!
+      Please refrain from black or white.
+    </p>
+    <img src="assets/dresscode.png" alt="Dress code guide" class="dresscode-img" style="max-width: min(520px, 90vw); width: 100%; height: auto; display: block; margin: 24px auto 0; position: relative; z-index: 1;" />
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 6 — REGISTRY
+====================================================== -->
+<section id="registry">
+  <div class="tissue-frame" style="background-image:url('assets/tissue1.png');"></div>
+  <div class="tissue-frame" style="background-image:url('assets/tissue2.png'); display:none;"></div>
+  <div class="tissue-frame" style="background-image:url('assets/tissue3.png'); display:none;"></div>
+  <h2 class="section-title">Registry</h2>
+
+  <div class="registry-card">
+    <p class="registry-prose">
+      We feel so lucky to celebrate with you—your presence is the greatest gift.
+      If you'd like to give something extra, we're registered on Amazon.
+      You can also contribute to our honeymoon or home renovation fund on Venmo: @themontgomerys.
+    </p>
+    <a class="btn-primary" href="https://www.amazon.com/wedding/share/montgomerymatrimony" target="_blank" rel="noopener">
+      View Our Registry
+    </a>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 7 — RSVP
+====================================================== -->
+<section id="rsvp">
+  <span class="eyebrow">Kindly Reply</span>
+  <h2 class="section-title">RSVP</h2>
+  <div style="display: flex; align-items: flex-start; justify-content: center; gap: 56px; flex-wrap: wrap; width: 100%; max-width: 1000px;">
+    <p style="flex: 0 0 300px; font-family: 'Crimson Pro', serif; font-style: italic; font-size: 1.1rem; color: #7a6050; line-height: 1.85; text-align: left; margin-top: 8px;">
+      We can't wait to celebrate with you!<br /><br />
+      Kindly RSVP by July 1st so we can save you a seat (and a slice of cake!)<br /><br />
+      We have to be mindful of our venue's max capacity, but if there is an additional person not listed on your invite that you'd like to attend, please reach out! Kindly note that children are limited to immediate family.
+    </p>
+
+  <div class="rsvp-card" style="flex: 0 0 auto;">
+    <form id="rsvpForm" onsubmit="submitRSVP(event)" novalidate>
+
+      <div class="form-group">
+        <label class="f-label" for="gName">Name(s)</label>
+        <input class="f-input" type="text" id="gName" placeholder="Your name(s)" required />
+      </div>
+
+      <div class="form-group">
+        <label class="f-label">Will you be joining us?</label>
+        <div class="radio-row">
+          <label class="r-label">
+            <input type="radio" name="attendance" value="Joyfully Accepts" required />
+            Joyfully Accepts
+          </label>
+          <label class="r-label">
+            <input type="radio" name="attendance" value="Regretfully Declines" />
+            Regretfully Declines
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="f-label" for="gDiet">Dietary Restrictions</label>
+        <input class="f-input" type="text" id="gDiet" placeholder="Any allergies or dietary needs?" />
+      </div>
+
+      <div class="form-group">
+        <label class="f-label" for="gMsg">Message to Emily &amp; Brady</label>
+        <textarea class="f-input" id="gMsg" placeholder="Share your well-wishes, a memory, or just say hello…"></textarea>
+      </div>
+
+      <button class="submit-btn" type="submit" id="submitBtn">Send with Love</button>
+      <div class="form-msg" id="formMsg"></div>
+    </form>
+  </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     FOOTER
+====================================================== -->
+<footer>
+  <div class="footer-names">Emily &amp; Brady</div>
+  <div class="footer-date">August 1st, 2026 &nbsp;·&nbsp; Belle Gardens</div>
+</footer>
+
+<!-- ======================================================
+     AIRTABLE SETUP BANNER (disappears once configured)
+====================================================== -->
+<div id="setup-banner">
+  ⚙️ RSVP not yet connected to Airtable —
+  <a onclick="showSetup(); return false;" href="#">click for 5-minute setup guide</a>
+  <button onclick="document.getElementById('setup-banner').remove()">dismiss</button>
+</div>
+
+<!-- ======================================================
+     AIRTABLE SETUP MODAL
+====================================================== -->
+<div id="setup-modal">
+  <div class="setup-inner">
+    <button class="setup-close" onclick="document.getElementById('setup-modal').style.display='none'">×</button>
+    <h3>Airtable RSVP Setup</h3>
+    <p>Follow these steps once — it only takes about 5 minutes and responses will flow into a tidy spreadsheet automatically.</p>
+    <ol>
+      <li>Go to <a href="https://airtable.com" target="_blank">airtable.com</a> and create a free account.</li>
+      <li>Create a new <strong>Base</strong> — name it anything (e.g. <em>Wedding RSVPs</em>).</li>
+      <li>Inside, rename the default table to <strong>RSVPs</strong> and add these fields:<br/>
+        <code>Name</code> &nbsp;<code>Attendance</code> &nbsp;<code>Party Size</code> &nbsp;<code>Message</code>
+      </li>
+      <li>Go to <a href="https://airtable.com/create/tokens" target="_blank">airtable.com/create/tokens</a> → create a Personal Access Token with scope <strong>data.records:write</strong> and access to your base.</li>
+      <li>Find your <strong>Base ID</strong>: visit <a href="https://airtable.com/api" target="_blank">airtable.com/api</a>, select your base — the Base ID (starts with <code>app…</code>) is shown in the URL and docs page.</li>
+      <li>Open <strong>index.html</strong> in any text editor. Find the RSVP CONFIG block near the bottom of the file and replace <code>YOUR_TOKEN_HERE</code> and <code>YOUR_BASE_ID_HERE</code> with your values.</li>
+      <li>Save &amp; done — every RSVP submission will appear in your Airtable base in real time 🌿</li>
+    </ol>
+  </div>
+</div>
+
+<!-- ======================================================
+     JAVASCRIPT
+====================================================== -->
+<script>
+  // ================================================================
+  //  ▼▼  RSVP CONFIG — fill in after Airtable setup  ▼▼
+  // ================================================================
+  const AIRTABLE_TOKEN   = 'patYFEYScQnxGu5Eh.a929010152c023b4639df8b169ead8cd7a6c8fbdc54416473da853e17cbaee09';    // from airtable.com/create/tokens
+  const AIRTABLE_BASE_ID = 'apphPT3jKurykMZNG';  // starts with "app..."
+  const AIRTABLE_TABLE   = 'RSVPs';
+  // ================================================================
+
+  const isConfigured = () =>
+    AIRTABLE_TOKEN   !== 'YOUR_TOKEN_HERE' &&
+    AIRTABLE_BASE_ID !== 'YOUR_BASE_ID_HERE';
+
+  // Hide setup banner once credentials are filled in
+  if (isConfigured()) document.getElementById('setup-banner').remove();
+
+  function showSetup() {
+    document.getElementById('setup-modal').style.display = 'block';
+  }
+  // Close modal on backdrop click
+  document.getElementById('setup-modal').addEventListener('click', function(e) {
+    if (e.target === this) this.style.display = 'none';
+  });
+
+  // ----------------------------------------------------------------
+  //  MARQUEE FONT SIZING
+  //  Measures "we're getting married!" at a known size, then scales it
+  //  so each phrase fills exactly one viewport width — guaranteeing the
+  //  two copies span 2× viewport and the seamless loop works perfectly.
+  // ----------------------------------------------------------------
+  function fitHeroText() {
+    const probe = document.createElement('span');
+    probe.style.cssText =
+      'font-family:"Pinyon Script",cursive;font-size:100px;' +
+      'white-space:nowrap;visibility:hidden;position:fixed;top:0;left:-9999px;';
+    probe.textContent = "we're getting married!";
+    document.body.appendChild(probe);
+    const naturalW = probe.offsetWidth;
+    probe.remove();
+    if (!naturalW) return; // fonts not ready yet — will retry via fonts.ready
+    const px = Math.round(window.innerWidth / naturalW * 100 * 0.65);
+    document.documentElement.style.setProperty('--mq-size', px + 'px');
+  }
+
+  fitHeroText();                          // best-effort on first paint
+  document.fonts.ready.then(fitHeroText); // precise once Pinyon Script loads
+  window.addEventListener('resize', fitHeroText, { passive: true });
+
+  // ----------------------------------------------------------------
+  //  ENVELOPE IMAGE SEQUENCE
+  //  env1 → env2 → env3 → env4 (longest) → repeat
+  // ----------------------------------------------------------------
+  (function () {
+    const frames = [
+      'assets/env1.png',
+      'assets/env2.png',
+      'assets/env3.png',
+      'assets/env4.png'
+    ];
+    // durations in ms — env4 holds longest before looping
+    const durations = [350, 350, 350, 2200];
+    let current = 0;
+    let timer = null;
+    const img = document.getElementById('envSeq');
+
+    function nextFrame() {
+      current = (current + 1) % frames.length;
+      img.src = frames[current];
+      timer = setTimeout(nextFrame, durations[current]);
+    }
+
+    // Preload all frames so there's no flicker
+    frames.forEach(src => { const i = new Image(); i.src = src; });
+
+    // Start playing when the section scrolls into view
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting && !timer) {
+        timer = setTimeout(nextFrame, durations[0]);
+      }
+    }, { threshold: 0.4 }).observe(document.getElementById('info'));
+  }());
+
+  // ----------------------------------------------------------------
+  //  TIMELINE SCROLL ANIMATION
+  // ----------------------------------------------------------------
+  const tlObs = new IntersectionObserver(entries => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting)
+        setTimeout(() => e.target.classList.add('vis'), i * 180);
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.tl-item').forEach(el => tlObs.observe(el));
+
+  // ----------------------------------------------------------------
+  //  MENU SLIDE-IN ANIMATIONS
+  // ----------------------------------------------------------------
+  document.querySelectorAll('.slide-left, .slide-right').forEach(el => {
+    let t = null;
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        t = setTimeout(() => el.classList.add('vis'), el.classList.contains('slide-right') ? 150 : 0);
+      } else {
+        clearTimeout(t);
+        el.classList.remove('vis');
+      }
+    }, { threshold: 0.2 }).observe(el);
+  });
+
+  // ----------------------------------------------------------------
+  //  LOCKET SCROLL-IN ANIMATION
+  // ----------------------------------------------------------------
+  const locketEl = document.querySelector('.locket-img');
+  if (locketEl) {
+    let locketTimer = null;
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        locketTimer = setTimeout(() => locketEl.classList.add('vis'), 200);
+      } else {
+        clearTimeout(locketTimer);
+        locketEl.classList.remove('vis');
+      }
+    }, { threshold: 0.2 }).observe(locketEl);
+  }
+
+  // ----------------------------------------------------------------
+  //  DRESSCODE POP ANIMATION
+  // ----------------------------------------------------------------
+  const dresscodeEl = document.querySelector('.dresscode-img');
+  if (dresscodeEl) {
+    let dresscodeTimer = null;
+    new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        dresscodeTimer = setTimeout(() => dresscodeEl.classList.add('vis'), 100);
+      } else {
+        clearTimeout(dresscodeTimer);
+        dresscodeEl.classList.remove('vis');
+      }
+    }, { threshold: 0.2 }).observe(dresscodeEl);
+  }
+
+  // ----------------------------------------------------------------
+  //  NAVBAR ACTIVE STATE
+  // ----------------------------------------------------------------
+  const navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    document.querySelectorAll('section[id]').forEach(s => {
+      if (window.scrollY >= s.offsetTop - 90) cur = s.id;
+    });
+    navAs.forEach(a => a.classList.toggle('active', a.getAttribute('href') === `#${cur}`));
+  }, { passive: true });
+
+  // ----------------------------------------------------------------
+  //  RSVP SUBMISSION → AIRTABLE
+  // ----------------------------------------------------------------
+  async function submitRSVP(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('formMsg');
+    const attended = document.querySelector('input[name="attendance"]:checked');
+
+    msg.className = 'form-msg';
+
+    if (!attended) {
+      msg.textContent = "Please let us know if you'll be attending.";
+      msg.className = 'form-msg err';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const payload = {
+      fields: {
+        'Name':                 document.getElementById('gName').value.trim(),
+        'Attendance':           attended.value,
+        'Dietary Restrictions': document.getElementById('gDiet').value.trim(),
+        'Message':              document.getElementById('gMsg').value.trim()
+      }
+    };
+
+    // ── Demo mode (Airtable not yet configured) ──
+    if (!isConfigured()) {
+      await new Promise(r => setTimeout(r, 1000));
+      msg.innerHTML = 'Thank you! We can\'t wait to celebrate with you.';
+      msg.className = 'form-msg ok';
+      document.getElementById('rsvpForm').reset();
+      btn.textContent = 'Sent with Love ✓';
+      flutterHearts();
+      return;
+    }
+
+    // ── Live submission to Airtable ──
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 10000);
+
+      const res = await fetch(
+        `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`,
+        {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${AIRTABLE_TOKEN}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload),
+          signal: controller.signal
+        }
+      );
+      clearTimeout(timeout);
+
+      if (res.ok) {
+        msg.innerHTML = 'Thank you! We can\'t wait to celebrate with you.';
+        msg.className = 'form-msg ok';
+        flutterHearts();
+        document.getElementById('rsvpForm').reset();
+        btn.textContent = 'Sent with Love ✓';
+      } else {
+        const err = await res.json();
+        const detail = err?.error?.message || `HTTP ${res.status}`;
+        throw new Error(detail);
+      }
+    } catch (err) {
+      const isTimeout = err.name === 'AbortError';
+      msg.textContent = isTimeout
+        ? 'Request timed out — please check your connection and try again.'
+        : `Something went wrong: ${err.message}`;
+      msg.className = 'form-msg err';
+      btn.disabled = false;
+      btn.textContent = 'Send with Love';
+      console.error('RSVP error:', err);
+    }
+  }
+  // ----------------------------------------------------------------
+  //  TISSUE BACKGROUND SEQUENCE
+  // ----------------------------------------------------------------
+  (function () {
+    const frames = document.querySelectorAll('.tissue-frame');
+    let current = 0;
+    setInterval(() => {
+      frames[current].style.display = 'none';
+      current = (current + 1) % frames.length;
+      frames[current].style.display = 'block';
+    }, 800);
+  }());
+
+  // ----------------------------------------------------------------
+  //  HEART FLUTTER
+  // ----------------------------------------------------------------
+  function flutterHearts() {
+    const hearts = ['♥', '♡', '♥', '♡', '♥'];
+    const colors = ['#C18987', '#DFB3B7', '#e8a0a0', '#C6BC74', '#d4b0b0'];
+    for (let i = 0; i < 18; i++) {
+      setTimeout(() => {
+        const el = document.createElement('span');
+        el.className = 'heart-particle';
+        el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+        el.style.color = colors[Math.floor(Math.random() * colors.length)];
+        el.style.left = (10 + Math.random() * 80) + 'vw';
+        el.style.bottom = '10vh';
+        el.style.setProperty('--drift', (Math.random() * 80 - 40) + 'px');
+        const dur = 1.8 + Math.random() * 1.4;
+        el.style.animationDuration = dur + 's';
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), dur * 1000);
+      }, i * 120);
+    }
+  }
+
+  // ----------------------------------------------------------------
+  //  PASSWORD GATE
+  // ----------------------------------------------------------------
+  (function () {
+    const gate = document.getElementById('password-gate');
+    if (sessionStorage.getItem('mm_auth') === '1') {
+      gate.style.display = 'none';
+      return;
+    }
+    // Allow pressing Enter to submit
+    document.getElementById('pw-input').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') checkPassword();
+    });
+  }());
+
+  function checkPassword() {
+    const val = document.getElementById('pw-input').value.trim().toLowerCase();
+    if (val === 'montgomerymatrimony') {
+      sessionStorage.setItem('mm_auth', '1');
+      document.getElementById('password-gate').style.display = 'none';
+    } else {
+      document.getElementById('pw-error').textContent = 'Incorrect password — try again!';
+      document.getElementById('pw-input').value = '';
+      document.getElementById('pw-input').focus();
+    }
+  }
+</script>
+</body>
+</html>

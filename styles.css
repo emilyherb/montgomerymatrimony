@@ -703,6 +703,7 @@ code {
   nav { height: auto; padding: 10px 20px; flex-wrap: wrap; }
   .nav-brand { margin-right: 0; margin-bottom: 4px; }
   .nav-links { gap: 14px; flex-wrap: wrap; justify-content: center; }
+  .hero-img { max-height: 55vh; }
   section { padding: 90px 22px 70px; }
   .env-seq { max-width: 94vw; }
   .platter-wrap { max-width: 94vw; }

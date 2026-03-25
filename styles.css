@@ -148,7 +148,7 @@ section {
 .hero-phrase {
   font-family: 'Pinyon Script', cursive;
   font-size: var(--mq-size, 14vw);
-  color: rgba(193,137,135, 0.17);
+  color: rgba(193,137,135, 0.25);
   white-space: nowrap;
   line-height: 1.15;
   padding-right: 0.18em;

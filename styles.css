@@ -479,7 +479,7 @@ section {
   z-index: 2;
 }
 .registry-card {
-  max-width: 500px;
+  max-width: 750px;
   width: 100%;
   background: var(--cream);
   border: 1px solid var(--blush);

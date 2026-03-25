@@ -20,7 +20,7 @@
   display: flex; flex-direction: column;
   align-items: center; justify-content: center;
   font-family: 'Crimson Pro', serif;
-  animation: gateIn 0.6s ease both;
+  opacity: 0; transition: opacity 0.6s ease;
 ">
   <div style="
     background: rgba(255,248,238,0.88);
@@ -97,7 +97,7 @@
   </div>
   <!-- Photo sits on top -->
   <div class="hero-photo-wrap">
-    <img class="hero-img" src="assets/us.JPG" alt="Emily &amp; Brady" />
+    <img class="hero-img" id="usSeq" src="assets/us1.JPG" alt="Emily &amp; Brady" />
   </div>
   <div class="scroll-cue">↓</div>
 </section>
@@ -109,6 +109,7 @@
   <a href="https://www.google.com/maps/dir/?api=1&destination=31509+N+Cedar+Rd+Deer+Park+WA" target="_blank" rel="noopener" title="Get directions to Belle Gardens" style="display:inline-block; cursor:pointer;">
     <img class="env-seq" id="envSeq" src="assets/env1.png" alt="Envelope — click for directions" />
   </a>
+  <p id="env-caption" style="opacity:0; transition: opacity 1.2s ease; color:#aaa; font-family:'Crimson Pro',serif; font-style:italic; font-size:0.95rem; margin-top:-60px; letter-spacing:0.05em;">click for directions</p>
 </section>
 
 <!-- ======================================================
@@ -410,8 +411,36 @@
     new IntersectionObserver(entries => {
       if (entries[0].isIntersecting && !timer) {
         timer = setTimeout(nextFrame, durations[0]);
+        // Fade in caption after ~2 full loops
+        setTimeout(() => {
+          const caption = document.getElementById('env-caption');
+          if (caption) caption.style.opacity = '1';
+        }, 6500);
       }
     }, { threshold: 0.4 }).observe(document.getElementById('info'));
+  }());
+
+  // ----------------------------------------------------------------
+  //  HERO PHOTO SEQUENCE  us1 → us2 → us3 → us4 → repeat
+  // ----------------------------------------------------------------
+  (function () {
+    const frames = [
+      'assets/us1.JPG',
+      'assets/us2.JPG',
+      'assets/us3.JPG',
+      'assets/us4.JPG'
+    ];
+    const duration = 1800; // ms per frame
+    let current = 0;
+    const img = document.getElementById('usSeq');
+
+    // Preload all frames
+    frames.forEach(src => { const i = new Image(); i.src = src; });
+
+    setInterval(() => {
+      current = (current + 1) % frames.length;
+      img.src = frames[current];
+    }, duration);
   }());
 
   // ----------------------------------------------------------------
@@ -612,6 +641,16 @@
     }
     // Lock body scroll while gate is showing
     document.body.style.overflow = 'hidden';
+    // Wait for background image to load before fading in
+    const bg = new Image();
+    bg.src = 'assets/background.png';
+    const showGate = () => { gate.style.opacity = '1'; };
+    if (bg.complete) {
+      showGate();
+    } else {
+      bg.onload = showGate;
+      bg.onerror = showGate; // show anyway if image fails
+    }
     // Allow pressing Enter to submit
     document.getElementById('pw-input').addEventListener('keydown', function(e) {
       if (e.key === 'Enter') checkPassword();

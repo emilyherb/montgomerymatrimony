@@ -140,14 +140,6 @@ section {
   white-space: nowrap;
   will-change: transform;
   backface-visibility: hidden;
-  transform: translateZ(0);
-}
-.mq-1 { animation: mqRight 16s linear infinite; }
-.mq-2 { animation: mqRight 24s linear infinite -9s; }
-.mq-3 { animation: mqRight 13s linear infinite -4s; }
-@keyframes mqRight {
-  from { transform: translate3d(-25%, 0, 0); }
-  to   { transform: translate3d(0, 0, 0); }
 }
 .hero-phrase {
   font-family: 'Pinyon Script', cursive;
@@ -189,11 +181,8 @@ section {
 
 /* ===================== INFO / ENVELOPE ===================== */
 #info {
-  background: var(--mist);
-  background-image:
-    radial-gradient(circle at 20% 80%, rgba(198,188,116,.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(193,137,135,.12) 0%, transparent 50%);
-  padding-top: 80px;
+  background: repeating-linear-gradient(90deg, rgba(136,96,95,0.45) 0px, rgba(136,96,95,0.45) 24px, rgba(225,187,185,0.45) 24px, rgba(225,187,185,0.45) 48px), var(--cream);
+  padding-top: 30px;
   padding-bottom: 40px;
   min-height: unset;
 }
@@ -272,7 +261,7 @@ section {
 .tl-item {
   display: flex;
   align-items: flex-start;
-  margin-bottom: 52px;
+  margin-bottom: 32px;
   opacity: 0;
   transform: translateX(-24px);
   transition: opacity .65s ease, transform .65s ease;
@@ -316,7 +305,7 @@ section {
 }
 
 /* ===================== MENU ===================== */
-#menu { background: var(--mist); padding-top: 60px; padding-bottom: 60px; min-height: unset; }
+#menu { background: repeating-linear-gradient(90deg, rgba(108,96,0,0.45) 0px, rgba(108,96,0,0.45) 24px, rgba(194,186,140,0.45) 24px, rgba(194,186,140,0.45) 48px), var(--cream); padding-top: 60px; padding-bottom: 60px; min-height: unset; }
 .platter-wrap {
   position: relative;
   display: inline-block;
@@ -522,7 +511,7 @@ section {
 .btn-primary:hover { background: #7a6e2e; transform: translateY(-2px); }
 
 /* ===================== RSVP ===================== */
-#rsvp { background: var(--mist); }
+#rsvp { background: repeating-linear-gradient(90deg, rgba(136,96,95,0.45) 0px, rgba(136,96,95,0.45) 24px, rgba(225,187,185,0.45) 24px, rgba(225,187,185,0.45) 48px), var(--cream); }
 .rsvp-deadline {
   font-family: 'Crimson Pro', serif;
   font-style: italic;

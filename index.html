@@ -109,7 +109,7 @@
   <a href="https://www.google.com/maps/dir/?api=1&destination=31509+N+Cedar+Rd+Deer+Park+WA" target="_blank" rel="noopener" title="Get directions to Belle Gardens" style="display:inline-block; cursor:pointer;">
     <img class="env-seq" id="envSeq" src="assets/env1.png" alt="Envelope — click for directions" />
   </a>
-  <p id="env-caption" style="opacity:0; transition: opacity 1.2s ease; color:#aaa; font-family:'Crimson Pro',serif; font-style:italic; font-size:0.95rem; margin-top:-60px; letter-spacing:0.05em;">click for directions</p>
+  <p id="env-caption" style="opacity:0; transition: opacity 1.2s ease; color:var(--bark); font-family:'Crimson Pro',serif; font-style:italic; font-size:0.95rem; margin-top:-60px; letter-spacing:0.05em;">click for directions</p>
 </section>
 
 <!-- ======================================================
@@ -123,11 +123,19 @@
   <div class="timeline-wrap">
     <div class="timeline">
       <div class="tl-item">
+        <div class="tl-time">3:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-event">Seating Opens</div>
+          <div class="tl-note">Find your seat & settle in</div>
+        </div>
+      </div>
+      <div class="tl-item">
         <div class="tl-time">4:00</div>
         <div class="tl-dot"></div>
         <div class="tl-body">
           <div class="tl-event">Ceremony</div>
-          <div class="tl-note">Join us as we say "I do"</div>
+          <div class="tl-note">Join us as we say "I do" — begins promptly at 4</div>
           <div class="tl-note" style="margin-top: 4px; font-style: italic;">Please refrain from taking photos during the ceremony.</div>
         </div>
       </div>
@@ -380,6 +388,43 @@
   fitHeroText();                          // best-effort on first paint
   document.fonts.ready.then(fitHeroText); // precise once Pinyon Script loads
   window.addEventListener('resize', fitHeroText, { passive: true });
+
+  // ----------------------------------------------------------------
+  //  MARQUEE ANIMATION (rAF — no CSS reset glitch)
+  // ----------------------------------------------------------------
+  (function () {
+    // durations match original CSS: 16s, 24s, 13s
+    // stagger offsets match original CSS negative delays: 0, -9s, -4s
+    const configs = [
+      { sel: '.mq-1', duration: 16, startFrac: 0 },
+      { sel: '.mq-2', duration: 24, startFrac: 9 / 24 },
+      { sel: '.mq-3', duration: 13, startFrac: 4 / 13 }
+    ];
+
+    document.fonts.ready.then(() => {
+      fitHeroText();
+
+      const state = configs.map(c => {
+        const el = document.querySelector(c.sel);
+        const W = el.scrollWidth / 4;           // one copy width in px
+        const speed = W / (c.duration * 60);    // px per frame at 60 fps
+        const offset = c.startFrac * W;         // staggered start
+        return { el, W, speed, offset };
+      });
+
+      function tick() {
+        state.forEach(s => {
+          s.offset += s.speed;
+          if (s.offset >= s.W) s.offset -= s.W;
+          // translate from -W toward 0 (moves right), then seamlessly resets
+          s.el.style.transform = `translate3d(${s.offset - s.W}px, 0, 0)`;
+        });
+        requestAnimationFrame(tick);
+      }
+
+      requestAnimationFrame(tick);
+    });
+  }());
 
   // ----------------------------------------------------------------
   //  ENVELOPE IMAGE SEQUENCE
